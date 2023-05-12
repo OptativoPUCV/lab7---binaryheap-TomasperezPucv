@@ -36,7 +36,7 @@ void heap_push(Heap* pq, void* data, int priority){
 
   
   if(pq ->heapArray[pq->size].priority > pq ->heapArray[pq->size/2].priority){
-    
+    printf("help\n");
     for(int i= pq->capac; i> 0; i= i/2){
       heapElem aux =pq ->heapArray[i];
       pq ->heapArray[i] = pq ->heapArray[i/2];
