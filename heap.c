@@ -28,6 +28,7 @@ void heap_push(Heap* pq, void* data, int priority){
   if(pq -> capac == pq ->size) pq ->heapArray = realloc(pq ->heapArray, (sizeof(heapElem)*2)+1);
   pq ->heapArray[pq->size].priority = priority;
   pq ->heapArray[pq->size].data = data;
+  pq->size++;
 }
 
 
