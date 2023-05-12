@@ -25,10 +25,17 @@ void* heap_top(Heap* pq){
 
 
 void heap_push(Heap* pq, void* data, int priority){
-  if(pq -> capac == pq ->size) pq ->heapArray = realloc(pq ->heapArray, (sizeof(heapElem)*2)+1);
+  if(pq -> capac == pq ->size){
+    pq ->heapArray = realloc(pq ->heapArray, (sizeof(heapElem)*2)+1);
+    pq->capac*=2;
+  } 
+
   pq ->heapArray[pq->size].priority = priority;
   pq ->heapArray[pq->size].data = data;
   pq->size++;
+  if(pq ->heapArray[pq->size].priority > pq ->heapArray[pq->size/2].priority){
+    printf("jaja");
+  }
 }
 
 
