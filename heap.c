@@ -47,7 +47,24 @@ void heap_push(Heap* pq, void* data, int priority){
 
 
 void heap_pop(Heap* pq){
-  heapElem aux = pq ->heapArray[(pq->size)-1];
+   pq->heapArray[0]=pq->heapArray[--pq->size];
+  int pos=0;
+  int left, right, father;
+  heapElem aux=pq->heapArray[pos];
+  while ((left=(pos*2) + 1) < pq->size) {
+    right=left+1;
+    father=left;
+    if (right<pq->size && pq->heapArray[right].priority > pq->heapArray[left].priority) {
+      father=right;
+    }
+    if(pq->heapArray[pos].priority >= pq->heapArray[father].priority){
+      break;
+    }
+    pq->heapArray[pos]=pq->heapArray[father];
+    pos=father;
+  }
+  pq->heapArray[pos]=aux;
+  /*heapElem aux = pq ->heapArray[(pq->size)-1];
   pq ->heapArray[(pq->size)-1] =pq ->heapArray[0];
   pq ->heapArray[0] = aux;
   pq ->heapArray[(pq->size)-1].priority =0;
@@ -89,7 +106,7 @@ void heap_pop(Heap* pq){
       }
       
     }
-  }
+  }*/
 }
 Heap* createHeap() {
   Heap *nuevo =malloc(sizeof(Heap));
