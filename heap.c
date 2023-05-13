@@ -68,43 +68,8 @@ void heap_pop(Heap* pq){
   }
   pq -> heapArray[i]= aux;
   
-  /*while(i< pq->size-1){
-    //caso 1 sin hijos :(
-    if(pq ->size == 1) break;
-    //caso 2 1 hijo
-    if((pq ->heapArray[(i*2)+1].data != NULL)||(pq ->heapArray[(i*2)+2].data != NULL)){
-      if(pq -> heapArray[i].priority < pq -> heapArray[(i*2)+1].priority){
-        aux = pq -> heapArray[i];
-        pq -> heapArray[i]= pq -> heapArray[(i*2)+1];
-        pq -> heapArray[(i*2)+1] = aux;
-        i = (i*2)+1;
-        
-      }else{
-        aux = pq -> heapArray[i];
-        pq -> heapArray[i]= pq -> heapArray[(i*2)+2];
-        pq -> heapArray[(i*2)+2] = aux;
-        i = (i*2)+2;
-      }
-    }
-    //caso 3 2 hijos
-    if((pq ->heapArray[(i*2)+1].data != NULL)&&(pq ->heapArray[(i*2)+2].data != NULL)){
-      if((pq -> heapArray[i].priority > pq -> heapArray[(i*2)+1].priority)&&(pq -> heapArray[i].priority > pq -> heapArray[(i*2)+2].priority)) break;
-      if((pq -> heapArray[i].priority < pq -> heapArray[(i*2)+1].priority)&&(pq -> heapArray[i].priority > pq -> heapArray[(i*2)+2].priority)){
-        aux = pq-> heapArray[i];
-        pq-> heapArray[i] = pq-> heapArray[(i*2)+1];
-        pq-> heapArray[(i*2)+1] = aux;
-        i = (i*2)+1;
-        
-      }else{
-        aux = pq-> heapArray[i];
-        pq-> heapArray[i] = pq-> heapArray[(i*2)+2];
-        pq-> heapArray[(i*2)+2] = aux;
-        i = (i*2)+2;
-      }
-      
-    }
-  }
-}*/
+ 
+}
 Heap* createHeap() {
   Heap *nuevo =malloc(sizeof(Heap));
   nuevo ->heapArray = malloc(sizeof(heapElem)*3);

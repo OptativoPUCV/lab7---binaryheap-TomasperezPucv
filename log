@@ -217,3 +217,14 @@ test.c:6:8: error: ‘_strdup’ defined but not used [-Werror=unused-function]
 cc1: all warnings being treated as errors
 Compilation failed
 d06e9e9
+Sat 13 May 2023 08:11:22 PM UTC: 
+ heap.c | 35 -----------------------------------
+ 1 file changed, 35 deletions(-)
+In file included from test.c:4:
+heap.c: In function ‘heap_pop’:
+heap.c:52:23: error: ‘aux’ undeclared (first use in this function)
+   52 |   pq ->heapArray[0] = aux;
+      |                       ^~~
+heap.c:52:23: note: each undeclared identifier is reported only once for each function it appears in
+Compilation failed
+b6e5162
