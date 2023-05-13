@@ -47,31 +47,28 @@ void heap_push(Heap* pq, void* data, int priority){
 
 
 void heap_pop(Heap* pq){
-   pq->heapArray[0]=pq->heapArray[--pq->size];
-  int pos=0;
-  int left, right, father;
-  heapElem aux=pq->heapArray[pos];
-  while ((left=(pos*2) + 1) < pq->size) {
-    right=left+1;
-    father=left;
-    if (right<pq->size && pq->heapArray[right].priority > pq->heapArray[left].priority) {
-      father=right;
-    }
-    if(pq->heapArray[pos].priority >= pq->heapArray[father].priority){
-      break;
-    }
-    pq->heapArray[pos]=pq->heapArray[father];
-    pos=father;
-  }
-  pq->heapArray[pos]=aux;
-  /*heapElem aux = pq ->heapArray[(pq->size)-1];
+  
   pq ->heapArray[(pq->size)-1] =pq ->heapArray[0];
   pq ->heapArray[0] = aux;
   pq ->heapArray[(pq->size)-1].priority =0;
   pq -> size --;
-  int i=0;
   
-  while(i< pq->size-1){
+
+  pq ->heapArray[0] = pq -> heapArray[pq -> size -1];
+  int i=0, izq, der, padre;
+  heapElem aux = pq ->heapArray[i];
+  while((izq= (i*2)+1) < pq -> size){
+    der = izq+1;
+    padre = izq;
+    if((der < pq -> size)&&(pq-> heapArray[der].priority > pq -> heapArray[izq].priority )) padre = der;
+    if(pq -> heapArray[i].priority >= pq -> heapArray[padre].priority) break;
+    pq -> heapArray[i]  = pq->heapArray[padre];
+    i = padre;
+    
+  }
+  pq -> heapArray[i]= aux;
+  
+  /*while(i< pq->size-1){
     //caso 1 sin hijos :(
     if(pq ->size == 1) break;
     //caso 2 1 hijo
@@ -106,8 +103,8 @@ void heap_pop(Heap* pq){
       }
       
     }
-  }*/
-}
+  }
+}*/
 Heap* createHeap() {
   Heap *nuevo =malloc(sizeof(Heap));
   nuevo ->heapArray = malloc(sizeof(heapElem)*3);
