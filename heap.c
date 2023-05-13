@@ -72,7 +72,17 @@ void heap_pop(Heap* pq){
         i = (i*2)+2;
       }
     }
-    //
+    //caso 3 2 hijos
+    if((pq ->heapArray[(i*2)+1].data != NULL)&&(pq ->heapArray[(i*2)+2].data != NULL)){
+      if((pq -> heapArray[i].priority > pq -> heapArray[(i*2)+1].priority)&&(pq -> heapArray[i].priority > pq -> heapArray[(i*2)+2].priority)) break;
+      if((pq -> heapArray[i].priority < pq -> heapArray[(i*2)+1].priority)&&(pq -> heapArray[i].priority > pq -> heapArray[(i*2)+2].priority)){
+        aux = pq-> heapArray[i];
+        pq-> heapArray[i] = pq-> heapArray[(i*2)+1];
+        pq-> heapArray[(i*2)+1] = aux;
+        i = (i*2)+1;
+        
+      }
+    }
 }
 
 Heap* createHeap(){
