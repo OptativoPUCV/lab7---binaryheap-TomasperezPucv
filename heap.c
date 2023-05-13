@@ -81,7 +81,13 @@ void heap_pop(Heap* pq){
         pq-> heapArray[(i*2)+1] = aux;
         i = (i*2)+1;
         
+      }else{
+        aux = pq-> heapArray[i];
+        pq-> heapArray[i] = pq-> heapArray[(i*2)+2];
+        pq-> heapArray[(i*2)+2] = aux;
+        i = (i*2)+2;
       }
+      
     }
 }
 
